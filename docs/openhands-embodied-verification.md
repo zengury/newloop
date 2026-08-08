@@ -1,5 +1,30 @@
 # OpenHands as an embodied coding-agent harness
 
+> ## ⚠️ SUPERSEDED — retained for history only
+>
+> Superseded by **[`openhands-embodied-harness.md`](./openhands-embodied-harness.md)**,
+> which is based on an actual checkout and a working proof-of-concept.
+>
+> This document was written without access to the OpenHands source (see its own
+> "Research limitation" note below) and describes the **legacy v0 architecture**.
+> Three of its load-bearing premises are wrong for current OpenHands:
+>
+> 1. **Wrong repository.** `All-Hands-AI/OpenHands` now redirects to
+>    `OpenHands/OpenHands`, which is *Agent Canvas*, a TypeScript UI. The Python
+>    agent loop moved to `OpenHands/software-agent-sdk`.
+> 2. **`AgentController` and `EventStream` no longer exist.** Every
+>    `openhands/controller/...`, `openhands/events/...` and `openhands/runtime/...`
+>    path cited below is gone from the mainline.
+> 3. **The recommended integration point is not implementable.** "A custom Runtime
+>    that withholds a terminal observation from the EventStream" has no analogue:
+>    there is no Runtime abstraction and no EventStream. Tools are executed inline
+>    inside `Agent.step()`.
+>
+> Its *conclusion* (YES) and much of its risk analysis happen to be correct, and
+> the correct integration point turns out to be simpler than the one proposed here.
+> Ironically, its own final risk — "API churn: pin versions" — is exactly what
+> invalidated it.
+
 **Research date:** 2026-08-08  
 **Upstream examined:** the public `All-Hands-AI/OpenHands` architecture and its
 documented event model. Upstream source links below deliberately target `main`;
